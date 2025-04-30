@@ -1,24 +1,23 @@
 import streamlit as st
 
-st.set_page_config(page_title="Home", page_icon="📘")
+st.set_page_config(page_title="Home | ExamEye", page_icon="📘")
 
-def main():
-    st.set_page_config(page_title="ExamEye - Automated Grading", layout="centered")
-    
-    st.title("📘 ExamEye")
-    st.subheader("Automated Grading System for Exam Sheets")
+st.markdown("## 📘 Welcome to ExamEye", unsafe_allow_html=True)
+st.markdown("---")
 
-    st.markdown("""
-    **ExamEye** leverages Computer Vision and OCR technologies to automatically grade:
-    - 📝 Multiple Choice Questions (MCQs)
-    - ✍️ Fill-in-the-Blank questions
+st.markdown("""
+### 🧠 What is ExamEye?
 
-    Our system uses **OpenCV** for image processing and **Tesseract OCR** for extracting text from scanned sheets.
+**ExamEye** is an intelligent exam assessor that uses **Computer Vision** and **OCR** technologies to automatically check and grade student answer sheets.
 
-    ---
-    """)
-    
-    st.info("To get started, go to the 'Exam Grading' page from the sidebar and upload a scanned answer sheet.")
+### 🛠 Features
+- 📝 **Multiple Choice Question** auto-detection
+- ✍️ **Fill-in-the-Blank** extraction and scoring
+- 📤 Easy file upload (PDF or image)
+- 📈 Real-time feedback with scoring and extracted text
 
-if __name__ == "__main__":
-    main()
+---
+
+ℹ️ **Get Started:**  
+Use the sidebar to go to the **Exam Grading** page and upload your answer sheet.
+""")
