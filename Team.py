@@ -1,60 +1,62 @@
-import streamlit as st
-
-st.set_page_config(page_title="Our Team", page_icon="👨‍💻")
-
-def main():
-    st.title("👨‍👩‍👧‍👦 Meet the Team Behind ExamEye")
-    st.markdown("""
-    ### 👋 Welcome!
-    We're a passionate group of developers and researchers building an intelligent grading system using Computer Vision and OCR.
-
-    ---
-    ### 🧠 Team Members
-    # Team.py
+# Team.py
 
 import streamlit as st
 
 st.set_page_config(page_title="Our Team", page_icon="👨‍💻")
 
 def main():
-    st.title("👨‍💻 ExamEye Development Team")
     st.markdown("""
-    We are a team of dedicated **Back-End Developers** behind the ExamEye project — focused on building efficient, scalable, and intelligent systems for automated exam grading.
+        <style>
+            h1 {
+                color: black;
+                text-align: center;
+            }
+            .team-header {
+                color: #1E90FF;
+                font-size: 22px;
+                font-weight: bold;
+            }
+            .team-subtext {
+                color: white;
+                margin-bottom: 20px;
+            }
+            .member-block {
+                color:black;
+                background-color: #F0F8FF;
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 15px;
+            }
+        </style>
+    """, unsafe_allow_html=True)
 
-    ---
+    st.markdown("<h1> ExamEye Development Team</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="team-subtext">
+        We are a team of skilled.behind ExamEye — focused on building scalable and intelligent grading systems using Computer Vision and OCR.
+    </div>
+    """, unsafe_allow_html=True)
 
-    ### 🛠️ Team Members
+    # Team members
+    members = [
+        ("Alhanouf", "Back-End Developer"),
+        ("Ezdhar", "Back-End Developer"),
+        ("Mohanad", "Back-End Developer"),
+        ("faisal", "Back-End Developer"),
+        ("Marwan", "Back-End Developer"),
 
-    #### 👨‍💻 Member 1: Ezdhar
-    - Role: Back-End Developer
-    - Focus:Streamlit back-end architecture and Model integration 
+    ]
 
-    #### 👨‍💻 Member 2: Alhanouf
-    - Role: Back-End Developer
-    - Focus:Image processing and data handling 
+    for name, role in members:
+        st.markdown(f"""
+        <div class="member-block">
+            <div class="team-header">👤 {name}</div>
+            <div>{role}</div>
+        </div>
+        """, unsafe_allow_html=True)
 
-    #### 👨‍💻 Member 3: Faisal
-    - Role: Back-End Developer
-    - Focus: OCR logic and Tesseract fine-tuning
-
-    #### 👨‍💻 Member 4: Mohanad
-    - Role: Back-End Developer
-    - Focus: Image processing pipeline (OpenCV), optimization 
-
-    #### 👨‍💻 Member 5: Marwan 
-    - Role: Back-End Developer
-    - Focus: Error handling, logging, and API linking
-
-    ---
-
-    Together, we built **ExamEye** to make grading fast, accurate, and hassle-free using computer vision and OCR.
-
-    """)
-
-    ---
-
-    We hope **ExamEye** helps automate and simplify grading workflows for teachers and institutions worldwide.
-    """)
+    st.markdown("---")
+    st.markdown("<div style='text-align:center; color:#1E90FF;'>Together, we built ExamEye to make grading fast, accurate, and hassle-free.</div>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
