@@ -58,12 +58,9 @@ streamlit run app.py
 exam-eye/
 ├── app.py                  # Main application file
 ├── requirements.txt        # Project dependencies
-├── assets/                 # Images and static files
 ├── modules/
 │   ├── ocr.py              # OCR functionality
 │   └── preprocessing.py    # Image preprocessing
-├── templates/              # Answer sheet templates
-├── results/                # Output directory
 └── README.md               # readme file
 ```
 

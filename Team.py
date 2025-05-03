@@ -1,112 +1,139 @@
+import cv2
 import streamlit as st
+from PIL import Image
+import base64
+import numpy as np
 
-st.set_page_config(page_title="Meet The Team", layout="wide", page_icon="🤖")
-
-st.markdown('<h1 style="text-align: center; color: #0066cc; font-weight: bold; margin-bottom: 10px;">Meet Our Amazing Team</h1>', unsafe_allow_html=True)
-st.markdown('<h3 style="text-align: center; color: #666; margin-bottom: 30px;">The talented minds behind ExamEye</h3>', unsafe_allow_html=True)
-
-
-# Custom CSS for styling 
-st.markdown("""
+def add_bg_from_base64(base64_string):
+    base64_img = f"""
     <style>
-        /* Main background */
-        .stApp {
-            background-color: #f8f9fa;
-        }
-        
-        /* Profile card styling */
-        .profile-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            height: 100%;
-        }
-        
-        /* Circular profile image */
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #0066cc;
-            margin: 0 auto 15px auto;
-            display: block;
-        }
-        
-        /* Team member name */
-        .member-name {
-            color: #333;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        /* Role title */
-        .member-role {
-            color: #0066cc;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        
-        /* LinkedIn button */
-        .linkedin-button {
-            background-color: #0066cc;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 14px;
-            display: inline-block;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-        
-        .linkedin-button:hover {
-            background-color: #004d99;
-        }
+    .stApp {{
+        background-image: url("pic1.jpg,{base64_string}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }}
+    .block-container {{
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+    }}
+    h1, h2, h3, p, li, span, div {{
+        color: #000000 !important;
+    }}
+    .main-title {{
+        font-size: 3rem !important;
+        font-weight: 800;
+        margin-bottom: 0;
+        background: none !important;
+        color: #000000 !important;
+        -webkit-background-clip: none !important;
+    }}
+    .subtitle {{
+        font-size: 1.3rem !important;
+        color: #000000 !important;
+        margin-top: 0.5rem;
+    }}
+    .stButton button {{
+        background-color: #2563EB;
+        color: white;
+        font-weight: bold;
+        padding: 0.5rem 2rem;
+        border-radius: 30px;
+    }}
     </style>
-""", unsafe_allow_html=True)
+    """
+    st.markdown(base64_img, unsafe_allow_html=True)
 
-team_members = [
-    {
-        "name": "Alhanouf Alswayed",
-        "role": "Back-End Developer",
-        "image": "https://static.vecteezy.com/system/resources/previews/020/911/731/original/profile-icon-avatar-icon-user-icon-person-icon-free-png.png",
-    },
-    {
-        "name": "Ezdhar Altamimi",
-        "role": "Back-End Developer",
-        "image": "https://static.vecteezy.com/system/resources/previews/020/911/731/original/profile-icon-avatar-icon-user-icon-person-icon-free-png.png",
-    },
-    {
-        "name": "Mohanad Abouassonon ",
-        "role": "Back-End Developer",
-        "image": "https://static.vecteezy.com/system/resources/previews/020/911/731/original/profile-icon-avatar-icon-user-icon-person-icon-free-png.png",
-    },
-    {
-        "name": "Faisal Almufarrih",
-        "role": "Back-End Developer",
-        "image": "https://static.vecteezy.com/system/resources/previews/020/911/731/original/profile-icon-avatar-icon-user-icon-person-icon-free-png.png",
-    },
-    {
-        "name": "Mrawan Alhinidi",
-        "role": "Back-End Developer",
-        "image": "https://static.vecteezy.com/system/resources/previews/020/911/731/original/profile-icon-avatar-icon-user-icon-person-icon-free-png.png",
-    }
-]
+def get_base64_of_image(path):
+    with open(path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
 
-cols = st.columns(5)
-for i, member in enumerate(team_members):
-    with cols[i]:
-        st.markdown(f"""
-            <div class="profile-card">
-                <img src="{member['image']}" class="profile-image" alt="{member['name']}">
-                <div class="member-name">{member['name']}</div>
-                <div class="member-role">{member['role']}</div>
+def main():
+    st.set_page_config(
+        page_title="ExamEye - Automated Exam Grading",
+        page_icon="📘",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
+
+    bg_image_base64 = get_base64_of_image("pic1 (1).jpg")
+    add_bg_from_base64(bg_image_base64)
+
+    col1, col2, col3 = st.columns([1, 4, 1])
+
+    with col2:
+        logo_base64 = get_base64_of_image("3330bf49-c818-4f5c-8a94-2053f85ac648.jpg")
+        st.markdown(f'''
+            <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; height: 100%;">
+                <img src="data:image/jpg;base64,{logo_base64}" width="190" />
             </div>
-        """, unsafe_allow_html=True)
+        ''', unsafe_allow_html=True)
 
-# footer
-st.markdown('<div style="text-align: center; margin-top: 50px; color: #666;">© 2025 ExamEye. All rights reserved.</div>', unsafe_allow_html=True)
+        st.markdown('<p class="subtitle" style="text-align:center;">Automated Grading System Powered by Computer Vision</p>', unsafe_allow_html=True)
+
+        st.markdown("""<p style="text-align:center;">ExamEye transforms how educators grade exams by automating the process
+        with powerful computer vision technology. Save hours of manual work and provide students with faster feedback.</p>""", unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    st.markdown("## 🔄 How It Works")
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.markdown("### 1. Upload")
+        st.markdown("Upload scanned exam sheets through our simple interface.")
+        
+    with col2:
+        st.markdown("### 2. Process")
+        st.markdown("Our CV algorithms identify and analyze answers automatically.")
+        
+    with col3:
+        st.markdown("### 3. Grade")
+        st.markdown("Answers are compared to your key and scored instantly.")
+        
+    with col4:
+        st.markdown("### 4. Review")
+        st.markdown("Review results, make adjustments, and export final grades.")
+
+    st.markdown("---")
+
+    st.markdown("## 🔬 Technology")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("### Computer Vision")
+        st.markdown("""- **OpenCV**: Advanced image processing for bubble detection  
+        - **Contour Analysis**: Precise identification of filled answers  
+        - **Spatial Recognition**: Smart grouping of questions and options""")
+
+    with col2:
+        st.markdown("### Text Recognition")
+        st.markdown("""- **Tesseract OCR**: Converting handwritten text to digital  
+        - **NLP Processing**: Evaluating text answer correctness  
+        - **Fuzzy Matching**: Accounting for spelling variations""")
+
+    st.markdown("---")
+
+    st.markdown("""
+    <div style="text-align: center; margin-top: 2rem; margin-right: 3rem;">
+        <button style="
+            background-color: #2563EB;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        ">🚀 Start Grading Now</button>
+        <p style="margin-top: 0.5rem;"><em>Upload your first answer sheet in less than 2 minutes</em></p>
+    </div>
+    """, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()
