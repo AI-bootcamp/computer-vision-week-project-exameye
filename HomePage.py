@@ -119,10 +119,8 @@ def main():
 
     st.markdown("---")
 
-    # Call to action section
     st.markdown("""
-    <div style="text-align: center; margin-top: 2rem;">
-        <h2 style="font-weight: 700;">Ready to streamline your grading process?</h2>
+    <div style="text-align: center; margin-top: 2rem; margin-right: 3rem;">
         <button style="
             background-color: #2563EB;
             color: white;
@@ -132,14 +130,10 @@ def main():
             font-size: 1rem;
             border: none;
             cursor: pointer;
-            margin: 1rem 0;
-        " onclick="document.getElementById('start_grading_bottom').click()">🚀 Start Grading Now</button>
+        ">🚀 Start Grading Now</button>
         <p style="margin-top: 0.5rem;"><em>Upload your first answer sheet in less than 2 minutes</em></p>
     </div>
     """, unsafe_allow_html=True)
-
-    # Hidden button to work with Streamlit
-    st.button("🚀 Start Grading Now", key="start_grading_bottom")
 
 if __name__ == "__main__":
     main()
