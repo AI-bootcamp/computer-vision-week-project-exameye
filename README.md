@@ -71,10 +71,10 @@ exam-eye/
 
 This project is developed by:
 - Ezdhar Altamimi
-- Ahanouf Al
-- Mohanad Al
-- Faisal Al
-- Marwan Al
+- Alhanouf Alswayed
+- Mohanad Abouassonon 
+- Faisal Almufarrih 
+- Mrawan Alhinidi 
 
 ## Future Enhancements
 
