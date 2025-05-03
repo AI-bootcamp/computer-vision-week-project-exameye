@@ -1,67 +1,84 @@
-**Exam Eye**
+# Exam Eye
 
-Exam Eye is an automated grading system that uses OCR to extract and evaluate student answers from uploaded exam images. 
-It supports two question types: Multiple Choice Questions (MCQs) and Fill-in-the-Blank. 
-Built with a simple and interactive Streamlit interface, Exam Eye provides fast and accurate grading with minimal manual effort.
+## Automated Exam Grading with OCR
 
+Exam Eye is an automated grading system that uses Optical Character Recognition (OCR) to extract and evaluate student answers from uploaded exam images. Built with a simple and interactive Streamlit interface, it provides fast and accurate grading with minimal manual effort.
 
-✨ Features:
-📋 Automatic Grading for MCQs: Instantly grades multiple-choice questions based on predefined answer keys.
+## Key Features
 
-📝 Fill-in-the-Blank Evaluation: Evaluates fill-in-the-blank responses using customizable matching techniques.
+- **OCR-Powered Assessment**: Extract text from exam papers automatically
+- **Multiple Question Types**: Supports Multiple Choice Questions (MCQs) and Fill-in-the-Blank questions
+- **User-Friendly Interface**: Built with Streamlit for intuitive interaction
+- **Result Analysis**: Generate statistics and performance insights
 
-🧑‍🏫 Streamlit File Upload: Instructors can upload answer keys and student responses via a user-friendly Streamlit interface.
+## Technology Stack
 
-📊 Result Reporting: Generates comprehensive and exportable grading reports.
+- **Frontend**: Streamlit
+- **Backend**: Python
+- **OCR Engine**: Tesseract/EasyOCR
+- **Image Processing**: OpenCV
+- **Data Analysis**: Pandas, NumPy
 
+## Installation
 
-👥 Team Member: 
-This project was developed by a dedicated team of five:
-
--Ezdhar Altamimi 
-
--Alhanouf Al-Suwaid
-
--Mohanad
-
--Faisal 
-
--Marwan
-
-
-📁 Project Structure:
-exam-eye/
-├── codes/
-|   ├── MCQ_Final_Edition.py
-│   └── fill_blank.py
-├── requirements.txt
-├── deployment/
-│   ├── app.py            # Streamlit frontend
-│   └── api.py            # FastAPI backend
-└── README.md
-
-
-🛠️ Tools & Libraries:
-Python - Programming language used for all project components
-pandas - Data manipulation and analysis (handling DataFrames of network traffic features)
-FastAPI - Creating a RESTful API for serving the trained models (backend deployment)
-Streamlit - Building an interactive web application frontend for live model interaction
-Tesseract OCR - Extracts text from exam images
-OpenCV / PIL - Image preprocessing
-
-🚀 Getting Started:
-1. Clone the Repository
+```bash
+# Clone the repository
 git clone https://github.com/AI-bootcamp/computer-vision-week-project-exameye
+cd exam-eye
 
-2. Install Python Dependencies
-Make sure you have Python 3.10+ installed.
-You can install all the required Python packages with:
+# Create and activate virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
+```
 
-3. Run the Streamlit Frontend
-In a terminal, run the Streamlit app with:
-streamlit run deployment/app.py
+## Usage
 
-4. Run the FastAPI Backend
-In another terminal window, start the FastAPI server with Uvicorn:
-uvicorn deployment.main:app --reload
+1. Start the application:
+
+```bash
+streamlit run app.py
+```
+
+2. Access the interface at [http://localhost:8501](http://localhost:8501)
+
+3. Upload exam template with answer key
+
+4. Upload student exams
+
+5. Configure grading settings
+
+6. View and export results
+
+## Project Structure
+
+```
+exam-eye/
+├── app.py                  # Main application file
+├── requirements.txt        # Project dependencies
+├── assets/                 # Images and static files
+├── modules/
+│   ├── ocr.py              # OCR functionality
+│   └── preprocessing.py    # Image preprocessing
+├── templates/              # Answer sheet templates
+├── results/                # Output directory
+└── README.md               # readme file
+```
+
+## Contributors
+
+This project is developed by:
+- Ezdhar Altamimi
+- Ahanouf Al
+- Mohanad Al
+- Faisal Al
+- Marwan Al
+
+## Future Enhancements
+
+- Support for additional question types (essays, short answers)
+- Machine learning-based answer evaluation
+- Integration with learning management systems
+- Mobile application support
