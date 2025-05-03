@@ -1,6 +1,6 @@
 # Exam Eye
 
-## Automated Exam Grading with OCR
+## Automated Exam Grading with OCR and image processing
 
 Exam Eye is an automated grading system that uses Optical Character Recognition (OCR) to extract and evaluate student answers from uploaded exam images. Built with a simple and interactive Streamlit interface, it provides fast and accurate grading with minimal manual effort.
 
@@ -15,7 +15,7 @@ Exam Eye is an automated grading system that uses Optical Character Recognition 
 
 - **Frontend**: Streamlit
 - **Backend**: Python
-- **OCR Engine**: Tesseract/EasyOCR
+- **OCR Engine**: TrOCR/EasyOCR
 - **Image Processing**: OpenCV
 - **Data Analysis**: Pandas, NumPy
 
